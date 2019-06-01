@@ -20,7 +20,12 @@ public class handleRequestState extends RequestState {
         //download aborted-
         this.ExitState();
         onState.setRequestState(noReq);
-        noReq.EnterState();
+        Thread t=new Thread(){
+            public void run(){
+                noReq.EnterState();
+            }
+        };
+        t.start();
 
     }
 

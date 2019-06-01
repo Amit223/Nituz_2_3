@@ -15,14 +15,14 @@ public class MachineOnState extends BigState{
     public void EnterState() {
         System.out.println("Enter MachineOn state");
         boolean toTurnOff=turnOff();
+        Thread req=new Thread(){
+            public void run(){
+                requestState.EnterState();
+            }
+        };
         if(internetOn()&!toTurnOff)
         {
             //start all kind of states: RequestState, todo
-            Thread req=new Thread(){
-                public void run(){
-                    requestState.EnterState();
-                }
-            };
             req.start();
         }
         while(internetOn()&&!toTurnOff)//checks that internet is on and user doesn't want to turn off the machine
@@ -30,6 +30,8 @@ public class MachineOnState extends BigState{
             toTurnOff=turnOff();
         }
         //turn off everything!- todo
+        req.interrupt();//stop req
+
         this.ExitState();
         off.EnterState();
 
