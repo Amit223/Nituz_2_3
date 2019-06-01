@@ -20,6 +20,7 @@ public class Main {
         noReq.setOnState(on);
         handle.setOnState(on);
 
+
         //declare check states
         CheckIdleState idle_check=new CheckIdleState();
         CheckDiskState check=new CheckDiskState();
@@ -36,13 +37,36 @@ public class Main {
         reCheck.setOnState(on);
         download.setOnState(on);
 
+
+        //declare user states
+        BeginnerState beginner=new BeginnerState();
+        AdvancedState advanced=new AdvancedState();
+        ProfessionalState professional=new ProfessionalState();
+        //connect
+        beginner.setNext(advanced);
+        advanced.setPrev(beginner);
+        advanced.setNext(professional);
+        professional.setPrev(advanced);
+        //connect to on
+        beginner.setOnState(on);
+        advanced.setOnState(on);
+        professional.setOnState(on);
+
+
+
         //set on states
         on.setOffState(off);
         on.setRequestState(noReq);
         on.setCheckState(idle_check);
+        on.setUserState(beginner);
 
         //start
-        off.EnterState();
+        Thread t=new Thread(){
+            public void run(){
+                off.EnterState();
+            }
+        };
+        t.start();
 
     }
 

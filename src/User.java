@@ -1,6 +1,7 @@
 public class User {
     private static User ourInstance = new User();
     private static int  points=0;
+    private static double speed=1;
     public static User getInstance() {
         return ourInstance;
     }
@@ -16,7 +17,15 @@ public class User {
         this.points-=1;
     }
 
-    public static int getPoints() {
+    public int getPoints() {
         return points;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        User.speed = speed;
     }
 }
