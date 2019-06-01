@@ -16,8 +16,7 @@ public class handleRequestState extends RequestState {
         if(!downloadAborted()) {
             addToCheckQueue(file);
         }
-        while(!downloadAborted());
-        //download aborted-
+        //download aborted or end function
         this.ExitState();
         onState.setRequestState(noReq);
         Thread t=new Thread(){
