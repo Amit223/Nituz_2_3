@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public abstract class LittleState implements State {
+public abstract class LittleState implements State{
 
     //todo : is true?
     protected boolean downloadAborted(){

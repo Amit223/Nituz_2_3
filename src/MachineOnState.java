@@ -13,12 +13,13 @@ public class MachineOnState extends BigState{
         boolean toTurnOff=turnOff();
         if(internetOn()&!toTurnOff)
         {
-            //all starters states on On
+            //all starters states on OnState
         }
         while(internetOn()&&!toTurnOff)//checks that internet is on and user doesn't want to turn off the machine
         {
             toTurnOff=turnOff();
         }
+        //turn off everything!- todo
         this.ExitState();
         off.EnterState();
 
