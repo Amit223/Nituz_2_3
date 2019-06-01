@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
 public abstract class LittleState implements State{
+    protected MachineOnState onState=null;
+    protected void setOnState(MachineOnState on){
+        onState=on;
+    }
 
     //todo : is true?
     protected boolean downloadAborted(){
