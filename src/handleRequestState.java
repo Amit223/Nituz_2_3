@@ -1,14 +1,15 @@
 import java.io.File;
-import java.util.Scanner;
 
-public class handleRequestState extends LittleState{
-    private State noReq=new noNewfileRequestState();
-    private File file;
+public class handleRequestState extends RequestState {
+    private RequestState noReq;
+    private File file=null;
 
-    public handleRequestState(File file) {
-        this.file = file;
+    public void setNoReq(RequestState noReq){
+        this.noReq=noReq;
     }
-
+    public void setFile(File f){
+        this.file=f;
+    }
     @Override
     public void EnterState() {
         System.out.println("Enter handleRequestState State");
@@ -18,6 +19,7 @@ public class handleRequestState extends LittleState{
         while(!downloadAborted())
         //download aborted-
         this.ExitState();
+        onState.setRequestState(noReq);
         noReq.EnterState();
 
     }

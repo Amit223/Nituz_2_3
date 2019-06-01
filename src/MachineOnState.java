@@ -3,9 +3,12 @@ import java.util.Scanner;
 
 public class MachineOnState extends BigState{
     private State off;//listener
-
-    public void setOff(MachineOffState off){
+    private RequestState requestState;
+    public void setOffState(MachineOffState off){
         this.off=off;
+    }
+    public void setRequestState(RequestState requestState){
+        this.requestState=requestState;
     }
     @Override
     public void EnterState() {
@@ -13,7 +16,13 @@ public class MachineOnState extends BigState{
         boolean toTurnOff=turnOff();
         if(internetOn()&!toTurnOff)
         {
-            //all starters states on OnState
+            //start all kind of states: RequestState, todo
+            Thread req=new Thread(){
+                public void run(){
+                    requestState.EnterState();
+                }
+            };
+            req.start();
         }
         while(internetOn()&&!toTurnOff)//checks that internet is on and user doesn't want to turn off the machine
         {

@@ -1,8 +1,12 @@
 import java.io.File;
 import java.util.Scanner;
 
-public class noNewfileRequestState extends LittleState{
-    private State handle;
+public class noNewfileRequestState extends RequestState {
+    private handleRequestState handle;
+
+    public void setHandle(handleRequestState handle){
+        this.handle=handle;
+    }
     @Override
     public void EnterState() {
         System.out.println("Enter noNewfileRequest State");
@@ -12,8 +16,9 @@ public class noNewfileRequestState extends LittleState{
             f=fileRequest();
         }
         //got file request:
-        handle=new handleRequestState(f);
+        handle.setFile(f);
         this.ExitState();
+        onState.setRequestState(handle);
         handle.EnterState();
     }
 
