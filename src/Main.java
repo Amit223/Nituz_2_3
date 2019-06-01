@@ -7,7 +7,9 @@ public class Main {
 
     public static void main(String[] args) {
         //declare off state which start on:
-        State off=new MachineOffState();
+        MachineOnState on=new MachineOnState();
+        MachineOffState off=new MachineOffState(on);
+        on.setOff(off);
         off.EnterState();
 
     }

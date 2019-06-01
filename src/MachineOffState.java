@@ -5,8 +5,11 @@ import java.net.URLConnection;
 import java.util.Scanner;
 
 public class MachineOffState extends BigState {
-    State on=new MachineOnState();//listener
+    State on;//listener
 
+    public MachineOffState(State on) {
+        this.on = on;
+    }
     @Override
     public void EnterState() {
         System.out.println("Enter MachineOff state");
@@ -18,6 +21,8 @@ public class MachineOffState extends BigState {
         System.out.println("Exit MachineOff state");
 
     }
+
+
 
     private void idleIntenetCheck(){
         while(internetOff());

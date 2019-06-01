@@ -2,16 +2,23 @@ import java.io.File;
 import java.util.Scanner;
 
 public class MachineOnState extends BigState{
-    private State off=new MachineOffState();//listener
+    private State off;//listener
 
+    public void setOff(MachineOffState off){
+        this.off=off;
+    }
     @Override
     public void EnterState() {
         System.out.println("Enter MachineOn state");
-        if(internetOn()&!turnOff())
+        boolean toTurnOff=turnOff();
+        if(internetOn()&!toTurnOff)
         {
             //all starters states on On
         }
-        while(internetOn()&&!turnOff());//checks that internet is on and user doesn't want to turn off the machine
+        while(internetOn()&&!toTurnOff)//checks that internet is on and user doesn't want to turn off the machine
+        {
+            toTurnOff=turnOff();
+        }
         this.ExitState();
         off.EnterState();
 
