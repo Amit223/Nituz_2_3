@@ -7,6 +7,7 @@ public class noNewfileRequestState extends RequestState {
     public void setHandle(handleRequestState handle){
         this.handle=handle;
     }
+
     @Override
     public void EnterState() {
         System.out.println("Enter noNewfileRequest State");

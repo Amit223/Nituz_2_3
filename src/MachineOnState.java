@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class MachineOnState extends BigState{
     private State off;//listener
     private RequestState requestState;
+
     public void setOffState(MachineOffState off){
         this.off=off;
     }
