@@ -39,7 +39,12 @@ public class MachineOffState extends BigState {
         }
         if(!internetOff()) {//there is internet and user wants to exit
             this.ExitState();
-            on.EnterState();
+            Thread t=new Thread(){
+                public void run(){
+                    on.EnterState();
+                }
+            };
+            t.start();
         }
         else{
             System.out.println("no intenet connection. Please check and try again");
