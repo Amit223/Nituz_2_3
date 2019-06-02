@@ -20,12 +20,8 @@ public class noNewfileRequestState extends RequestState {
         handle.setFile(f);
         this.ExitState();
         onState.setRequestState(handle);
-        Thread t=new Thread(){
-            public void run(){
-                handle.EnterState();
-            }
-        };
-        t.start();
+        handle.EnterState();
+
     }
 
     @Override

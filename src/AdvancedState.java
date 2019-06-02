@@ -29,11 +29,6 @@ public class AdvancedState extends UserState {
     public void ExitState() {
         System.out.println("Exit Advanced State");
         onState.setUserState(exitState);
-        Thread t=new Thread(){
-            public void run(){
-                exitState.EnterState();
-            }
-        };
-        t.start();
+        exitState.EnterState();
     }
 }

@@ -18,12 +18,8 @@ public class BeginnerState extends UserState {
     public void ExitState() {
         System.out.println("Exit Beginner State");
         onState.setUserState(advanced);
-        Thread t=new Thread(){
-            public void run(){
-                advanced.EnterState();
-            }
-        };
-        t.start();
+        advanced.EnterState();
+
 
     }
 }

@@ -18,12 +18,8 @@ public class DownloadFirstFileState extends CheckState {
         }
         //abort or function done
         onState.setCheckState(idle);
-        Thread t=new Thread(){
-            public void run(){
-                idle.EnterState();
-            }
-        };
-        t.start();
+        idle.EnterState();
+
 
     }
 

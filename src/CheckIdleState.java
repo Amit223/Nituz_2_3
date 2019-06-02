@@ -12,12 +12,8 @@ public class CheckIdleState extends CheckState {
         //entered one file!
         this.ExitState();
         onState.setCheckState(check);
-        Thread t=new Thread(){
-            public void run(){
-                check.EnterState();
-            }
-        };
-        t.start();
+        check.EnterState();
+
 
     }
 

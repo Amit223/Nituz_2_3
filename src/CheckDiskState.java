@@ -38,12 +38,8 @@ public class CheckDiskState extends CheckState {
     public void ExitState() {
         System.out.println("Exit CheckDisk state");
         onState.setCheckState(toExit);
-        Thread t=new Thread(){
-            public void run(){
-                toExit.EnterState();
-            }
-        };
-        t.start();
+        toExit.EnterState();
+
 
     }
 }

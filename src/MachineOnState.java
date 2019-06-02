@@ -63,7 +63,7 @@ public class MachineOnState extends BigState{
 
     @Override
     public void ExitState() {
-        System.out.println("Enter MachineOn state");
+        System.out.println("Exit MachineOn state");
 
     }
 

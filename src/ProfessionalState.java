@@ -18,11 +18,7 @@ public class ProfessionalState extends UserState {
     public void ExitState() {
         System.out.println("Exit Professional State");
         onState.setUserState(advanced);
-        Thread t=new Thread(){
-            public void run(){
-                advanced.EnterState();
-            }
-        };
-        t.start();
+        advanced.EnterState();
+
     }
 }
