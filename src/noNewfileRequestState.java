@@ -36,6 +36,7 @@ public class noNewfileRequestState extends RequestState {
 
     //todo :is this ok?
     private File fileRequest(){
+        System.out.println("Enter file path in order to download file");
         Scanner reader = new Scanner(System.in);
         String path=reader.next();
         File f=new File(path);//assume path is ok
