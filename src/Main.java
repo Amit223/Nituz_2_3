@@ -38,6 +38,31 @@ public class Main {
         download.setOnState(on);
 
 
+        //declare download states
+        IdleDownload idle_download=new IdleDownload();
+        DownloadingState downloading=new DownloadingState();
+        ErrorState error=new ErrorState();
+        WaitForInternetState wait=new WaitForInternetState();
+        FinishSuccessfulState finish=new FinishSuccessfulState();
+        //connect
+        idle_download.setDownloading(downloading);
+        downloading.setError(error);
+        downloading.setFinish(finish);
+        downloading.setIdle(idle_download);
+        downloading.setWait(wait);
+        error.setDownloading(downloading);
+        error.setIdle(idle_download);
+        wait.setDownloading(downloading);
+        wait.setIdle(idle_download);
+        finish.setIdle(idle_download);
+        //connect to on
+        idle_download.setOnState(on);
+        downloading.setOnState(on);
+        error.setOnState(on);
+        wait.setOnState(on);
+        finish.setOnState(on);
+
+
         //declare user states
         BeginnerState beginner=new BeginnerState();
         AdvancedState advanced=new AdvancedState();
@@ -59,6 +84,7 @@ public class Main {
         on.setRequestState(noReq);
         on.setCheckState(idle_check);
         on.setUserState(beginner);
+        on.setDownloadState(idle_download);
 
         //start
         Thread t=new Thread(){

@@ -5,9 +5,9 @@ import java.net.URLConnection;
 import java.util.Scanner;
 
 public class MachineOffState extends BigState {
-    State on;//listener
+    MachineOnState on;//listener
 
-    public MachineOffState(State on) {
+    public MachineOffState(MachineOnState on) {
         this.on = on;
     }
     @Override

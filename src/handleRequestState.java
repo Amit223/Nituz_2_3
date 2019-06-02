@@ -1,10 +1,8 @@
-import java.io.File;
-
 public class handleRequestState extends RequestState {
-    private RequestState noReq;
+    private noNewfileRequestState noReq;
     private File file=null;
 
-    public void setNoReq(RequestState noReq){
+    public void setNoReq(noNewfileRequestState noReq){
         this.noReq=noReq;
     }
     public void setFile(File f){

@@ -2,9 +2,10 @@ import java.io.File;
 import java.util.Scanner;
 
 public class MachineOnState extends BigState{
-    private State off;//listener
+    private MachineOffState off;//listener
     private RequestState requestState;
     private CheckState checkState;
+    private DownloadState downloadState;
     private UserState userState;
 
     public void setOffState(MachineOffState off){
@@ -16,6 +17,7 @@ public class MachineOnState extends BigState{
     public void setCheckState(CheckState checkState){
         this.checkState=checkState;
     }
+    public void setDownloadState(DownloadState downloadState) { this.downloadState = downloadState;}
     public void setUserState(UserState userState) {this.userState = userState; }
 
     @Override
@@ -33,6 +35,12 @@ public class MachineOnState extends BigState{
             }
         };
 
+        Thread download=new Thread(){
+            public void run(){
+                downloadState.EnterState();
+            }
+        };
+
         Thread user=new Thread(){
             public void run(){
                 userState.EnterState();
@@ -42,6 +50,7 @@ public class MachineOnState extends BigState{
 
         req.start();
         check.start();
+        download.start();
         user.start();
         boolean toTurnOff=turnOff();
 
@@ -54,6 +63,7 @@ public class MachineOnState extends BigState{
         req.interrupt();//stop req
         check.interrupt();
         user.interrupt();
+        download.interrupt();
 
         //exit
         this.ExitState();

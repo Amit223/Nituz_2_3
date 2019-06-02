@@ -1,4 +1,3 @@
-import java.io.File;
 
 public class DownloadFirstFileState extends CheckState {
     private CheckIdleState idle=null;
@@ -32,6 +31,7 @@ public class DownloadFirstFileState extends CheckState {
     public void startDownload(){
         File f=checkQueue.poll();
         downloadQueue.add(f);
+        watchQueue.add(f);
         //todo- make the boolean startDownload in abstract DownloadFileState-true (when done, change to false;
     }
 
